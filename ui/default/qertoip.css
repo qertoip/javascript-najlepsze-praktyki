@@ -1,0 +1,11 @@
+.bad {
+  color: red;
+}
+
+.good {
+  color: #006400;
+}
+
+.slide div {
+  font-size: 20px;
+}

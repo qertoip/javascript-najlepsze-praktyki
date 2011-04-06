@@ -1,0 +1,459 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <title>JavaScript - garść najlepszych praktyk</title>
+  <!-- metadata -->
+  <meta name="generator" content="S5"/>
+  <meta name="version" content="S5 1.1"/>
+  <meta name="presdate" content="20050728"/>
+  <meta name="author" content="Eric A. Meyer"/>
+  <meta name="company" content="Complex Spiral Consulting"/>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <!-- configuration parameters -->
+  <meta name="defaultView" content="slideshow"/>
+  <meta name="controlVis" content="hidden"/>
+  <!-- style sheet links -->
+  <link rel="stylesheet" href="ui/default/slides.css" type="text/css" media="projection" id="slideProj"/>
+  <link rel="stylesheet" href="ui/default/outline.css" type="text/css" media="screen" id="outlineStyle"/>
+  <link rel="stylesheet" href="ui/default/print.css" type="text/css" media="print" id="slidePrint"/>
+  <link rel="stylesheet" href="ui/default/opera.css" type="text/css" media="projection" id="operaFix"/>
+  <link rel="stylesheet" href="ui/default/qertoip.css" type="text/css" media="screen" id="qertoip"/>
+  <!-- S5 JS -->
+  <script src="ui/default/slides.js" type="text/javascript"></script>
+
+  
+  <!-- SyntaxHighlighter -->
+  <script type="text/javascript" src="syntaxhighlighter/scripts/shCore.js"></script>
+  <script type="text/javascript" src="syntaxhighlighter/scripts/shBrushJScript.js"></script>
+  <script type="text/javascript" src="syntaxhighlighter/scripts/shBrushRuby.js"></script>
+  <link type="text/css" rel="stylesheet" href="syntaxhighlighter/styles/shCoreDefault.css"/>
+  <script type="text/javascript">
+    SyntaxHighlighter.defaults.gutter = false;
+    SyntaxHighlighter.defaults.toolbar = false;
+    SyntaxHighlighter.defaults.brush = 'js';
+    SyntaxHighlighter.defaults['class-name'] = 'lots-of-code';
+    SyntaxHighlighter.all();
+  </script>
+  
+  
+</head>
+<body>
+
+<div class="layout">
+  <div id="controls"><!-- DO NOT EDIT --></div>
+  <div id="currentSlide"><!-- DO NOT EDIT --></div>
+  <div id="header"></div>
+  <div id="footer">
+    <h1>JavaScript - garść najlepszych praktyk!</h1>
+    <a href="http://thesingularity.pl" style="color: #AAB;"><h2>TheSingularity.pl</h2></a>
+  </div>
+
+</div>
+
+
+<div class="presentation">
+
+  <!-- = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
+
+  <div class="slide">
+    <h1>
+      JavaScript<br />
+      Garść najlepszych praktyk
+    </h1>
+
+    <h3>Piotr 'Qertoip' Włodarek</h3>
+    <h4>http://TheSingularity.pl</h4>
+  </div>
+
+  <!-- = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
+
+  <div class="slide">
+    <h1>JavaScript</h1>
+    <p>
+      Język programowania, który jest:
+    </p>
+    <ul>
+      <li>najpowszechniej posiadany</li>
+      <li>najczęściej wykonywany</li>
+      <li>najpopularniejszy na githubie</li>
+      <li>C XXI wieku</li>
+    </ul>
+    <p>
+      Cokolwiek o nim myślisz...
+    </p>
+    <ul>
+      <li>staje się pewnym kanonem</li>
+      <li><span class="good">wypada go znać</span></li>
+    </ul>
+    <div class="handout">
+      [any material that should appear in print but not on the slide]
+    </div>
+  </div>
+
+  <!-- = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
+
+  <div class="slide">
+    <h1>Zasięg zmiennych</h1>
+    <p>
+      Tylko dwa rodzaje zasięgu zmiennych:
+    </p>
+    <ul>
+      <li>globalny (<span class="bad">domyślny!</span>)</li>
+      <li>lokalny w funkcji</li>
+    </ul>
+    <p>
+      W szczególności, JavaScript nie posiada:
+    </p>
+    <ul>
+      <li>przestrzeni nazw</li>
+      <li>zasięgu blokowego</li>
+      <li>klas</li>
+    </ul>
+  </div>
+
+  <!-- = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
+
+  <div class="slide">
+    <h1>Zasięg zmiennych</h1>
+    <p class="good">
+      Pamiętaj o <strong>var</strong>:
+    </p>
+    <script type="syntaxhighlighter" class="brush: js"><![CDATA[
+      function f() {
+        var k = 2;
+      }
+    ]]></script>
+  </div>
+
+  <!-- = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
+
+  <div class="slide">
+    <h1>Operacje na liczbach</h1>
+    <p>
+      JavaScript ma tylko jeden typ liczbowy: <strong>Number</strong>
+    </p>
+    <ul>
+      <li>8-bajtowy</li>
+      <li>zmiennoprzecinkowy (<span class="bad">błędy zaokrągleń</span>)</li>
+      <li>zgodny z IEEE 754</li>
+      <li>analogiczny do Java double</li>
+      <li class="bad">co z kwotami?</li>
+    </ul>
+  </div>
+
+  <!-- = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
+
+  <div class="slide">
+    <h1>Operacje na liczbach</h1>
+    <p class="good">
+      Kwoty trzymaj wyłącznie jako liczby całkowite
+    </p>
+    <ul>
+      <li>liczby całkowite są reprezentowane dokładnie</li>
+      <li>działania na liczbach całkowitych dają dokładny wynik</li>
+    </ul>
+  </div>
+
+  <!-- = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
+
+  <div class="slide">
+    <h1>Operator przyrównania</h1>
+    <p>
+      Operator == to gwałciciel logiki i typów (type coercion)
+    </p>
+    <ul>
+      <li><span class="bad">nielogiczny</span>
+        <script type="syntaxhighlighter" class="brush: js"><![CDATA[
+          ' \t\r\n ' == 0  // true!
+        ]]></script>
+      </li>
+      <li><span class="bad">nieprzechodni</span>
+        <script type="syntaxhighlighter" class="brush: js"><![CDATA[
+          0 == '0'   // true
+          0 == ''    // true
+          '0' == ''  // false!
+        ]]></script>
+      </li>
+    </ul>
+
+  </div>
+
+  <!-- = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
+
+  <div class="slide">
+    <h1>Operator przyrównania</h1>
+    <p class="good">
+      Zawsze używaj operatorów <strong>===</strong> oraz <strong>!==</strong>
+    </p>
+    <ul>
+      <li>Działają zgodnie z oczekiwaniami</li>
+      <li>Są silnie typowane
+        <script type="syntaxhighlighter" class="brush: js"><![CDATA[
+          '2' === 2  // false
+        ]]></script>
+      </li>
+    </ul>
+  </div>
+
+  <!-- = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
+
+  <div class="slide">
+    <h1>Operator new</h1>
+    <p>Obiektowość oparta o <strong>new</strong> jest <span class="bad">błędogenna</span></p>
+    <script type="syntaxhighlighter" class="brush: js"><![CDATA[
+      function User( options ) {
+        this.email = options.email
+      }
+
+      var u1 = new User( 'kunegunda@gmail.com' );
+      // ...
+      var u2 = User( 'kunegunda@gmail.com' );  // globalna przestrzeń skażona!
+    ]]></script>
+  </div>
+
+  <!-- = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
+
+  <div class="slide">
+    <h1>Operator new</h1>
+    <p>Obiektowość oparta o <strong>new</strong> jest <span class="bad">brzydka</span></p>
+    <script type="syntaxhighlighter" class="brush: js"><![CDATA[
+      function User( options ) {
+        this.email = options.email;
+      }
+      
+      // Obskurna definicja metody poza definicją "klasy" - WTF?
+      User.prototype.getEmail = function() {
+        return this.email;
+      }
+    ]]></script>
+  </div>
+
+  <!-- = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
+  
+  <div class="slide">
+    <h1>Operator new</h1>
+    <p>Obiektowość oparta o <strong>new</strong> ma <span class="bad">słabą enkapsulację</span></p>
+    <script type="syntaxhighlighter" class="brush: js"><![CDATA[
+      function User( options ) {
+        this.email = options.email;
+        this._cryptedPassword = SHA256.encrypt( options.password );
+      
+        // brzydkie this._cryptedPassword
+      }
+      
+      u = new User( { email: 'kunegunda@gmail.com', password: 'test123' } );
+      u._cryptedPassword;  // publiczne
+    ]]></script>
+  </div>
+
+  <!-- = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
+
+  <div class="slide">
+    <h1>Operator new</h1>
+    <p class="good">
+      Unikaj obiektowości bazującej na operatorze <strong>new</strong>
+    </p>
+    <p>
+      Stosuj nowoczesne modele obiektowości bazujące na domknięciach (closures).
+    </p>
+  </div>
+  
+
+  <!-- = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
+
+  <div class="slide">
+    <h1>Jak definiować klasy?</h1>
+
+    <script type="syntaxhighlighter" class="brush: js"><![CDATA[
+      var Wrug = {};
+      
+      // ...
+
+      var Wrug.User = function( options ) {
+
+        var email = options.email;
+
+        function getEmail() {
+          return email;
+        }
+
+        function somePrivateMethod() {
+          // ...
+        }
+
+        // Public API
+        return {
+          getEmail: getEmail
+        }
+      }
+      
+      // ...
+      
+      var jasFasola = Wrug.User( { email: 'jas.fasola@gmail.com' } );
+    ]]></script>
+  </div>
+  
+
+  <!-- = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
+
+  <div class="slide">
+    <h1>Jak definiować moduły?</h1>
+
+    <script type="syntaxhighlighter" class="brush: js"><![CDATA[
+      Wrug.Application = ( function() {
+
+        var users = [];
+
+        function getUserByEmail( email ) {
+          // ...
+          return user;
+        }
+
+        // Public API
+        return {
+          getUserByEmail: getUserByEmail
+        }
+      } )();  // wywołanie ()
+      
+      // ...
+
+      var jasFasola = Wrug.Application.getUserByEmail( 'jas.fasola@gmail.com' );
+    ]]></script>
+  </div>
+
+  <!-- = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
+
+  <div class="slide">
+    <h1>JavaScript MVC</h1>
+    <ul>
+      <li>Obiekty biznesowe w JS</li>
+      <li>Kontrolery w JS</li>
+      <li>Widoki (szablony) w JS</li>
+      <li style="text-decoration: line-through;">Czy to ma sens?</li>
+      <li><strong>Kiedy to ma sens?</strong></li>
+    </ul>
+  </div>
+
+  <!-- = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
+  
+  <div class="slide">
+    <h1>JavaScript MVC</h1>
+    <h2>Kiedy to ma sens? Moim zdaniem:</h2>
+    <ul>
+      <li>
+        Gdy serwer wystawia <strong>czyste dane</strong> zamiast HTML-a
+      </li>
+      <li>
+        Gdy chcemy w przeglądarce stworzyć klienta API analogicznego do klientów mobilnych
+      </li>
+      <li>
+        Gdy piszemy de facto pulpitową aplikację działającą w środowisku przeglądarki,
+        a zdalny serwer służy jako centralny data store, z którym się synchronizujemy.
+      </li>
+    </ul>
+  </div>
+
+  <!-- = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
+
+  <div class="slide">
+    <h1>JavaScript w odpowiedziach serwera</h1>
+    <h2>Dla przypomnienia, w Railsach:</h2>
+    <ul>
+      <li>
+        Inline JavaScript w kontrolerze
+        <script type="syntaxhighlighter" class="brush: ruby"><![CDATA[
+          render :js => "alert('this sucks')"
+        ]]></script>
+      </li>
+      <li>
+        RJS
+        <script type="syntaxhighlighter" class="brush: ruby"><![CDATA[
+          render :update do |page|
+            page.call( "alert( 'this sucks' );" )
+          end
+        ]]></script>
+      </li>
+      <li>Szablony *.js.erb
+        <script type="syntaxhighlighter" class="brush: ruby"><![CDATA[
+          $( "#products" ).html(
+            "<%= escape_javascript( render( @products ) )%>"
+          );
+        ]]></script>
+      </li>
+    </ul>
+  </div>
+
+  <!-- = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
+
+  <div class="slide">
+    <h1>JavaScript w odpowiedziach serwera</h1>
+    <h2>Zwracanie JS z serwera bywa praktyczne w <strong>małych</strong> aplikacjach</h2>
+    <ul>
+      <li>ma swoje miejsce, nie chcę go całkowicie dyskredytować</li>
+      <li>na pewno jest to technika powszechnie wykorzystywana</li>
+      <li><strong>ale...</strong></li>
+    </ul>
+  </div>
+  
+  <!-- = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
+
+  <div class="slide">
+    <h1>JavaScript w odpowiedziach serwera</h1>
+    <h2>Problemy:</h2>
+    <ul>
+      <li><span class="bad">JS przepleciony z Ruby</span></li>
+      <li><span class="bad">JS rozrzucony po widokach, kontrolerach i public'u</span></li>
+      <li><span class="bad">Trudna statyczna analiza kodu (np. JSLint)</span></li>
+      <li><span class="bad">Włochate odpowiedzi serwera JS + escape'owany HTML</span></li>
+      <li><span class="bad">Wrażliwa kwestia: kiedy serwer zwróci JS a kiedy HTML?</span></li>
+    </ul>
+  </div>
+  
+  <!-- = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
+
+  <div class="slide">
+    <h1>JavaScript w odpowiedziach serwera</h1>
+    <h2>Sugerowane rozwiązanie:</h2>
+    <ul>
+      <li><span class="good">serwer zwraca wyłącznie HTML-a</span></li>
+      <li><span class="good">serwer nigdy nie zwraca JS</span></li>
+      <li><span class="good">kod JS można umieszczać wyłącznie w public/javascripts</span></li>
+    </ul>
+  </div>
+
+  <!-- = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =  -->
+
+  <div class="slide">
+    <h1>Podsumowanie</h1>
+    <ul>
+      <li><span class="good">Warto zgłębić JavaScript, nie ma przed nim ucieczki ;-)</span></li>
+      <li><span class="good">Wszędzie var, żeby wymusić lokalny zasięg zmiennych</span></li>
+      <li><span class="good">Kwoty przetwarzamy wyłącznie jako liczby całkowite</span></li>
+      <li><span class="good">Wszędzie ===, bo == to zło</span></li>
+      <li><span class="good">Operator new jest okupiony licznymi wadami</span></li>
+      <li><span class="good">Nowoczesna obiektowość w JS bazuje na domknięciach</span></li>
+      <li><span class="good">MVC w JS używamy, gdy serwer zwraca dane a nie HTML-a</span></li>
+      <li><span class="good">Generalnie serwer nie powinien renderować JavaScriptu</span></li>
+    </ul>
+  </div>
+
+</div>
+
+<script type="text/javascript">
+
+  var person = {
+    name: "Piotrek",
+    getName: function() {
+      return name;
+    }
+  }
+
+  p2 = object( person );
+
+</script>
+
+</body>
+</html>
